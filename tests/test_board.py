@@ -123,9 +123,13 @@ def test_top_right_to_bottom_left_diagonal_win():
 
 
 def test_o_wins():
-    """Win detection must work for both symbols, not just X."""
+    """Win detection must work for both symbols, not just X.
+
+    O takes the right column (cells 2, 5, 8) here, so the winner must be O
+    regardless of X's scattered marks.
+    """
     board = Board()
-    _place_marks(board, [(0, "X"), (4, "O"), (1, "X"), (2, "O"), (3, "X"), (8, "O")])
+    _place_marks(board, [(0, "X"), (2, "O"), (1, "X"), (5, "O"), (3, "X"), (8, "O")])
     assert board.winner() == "O"
     assert board.is_game_over()
 
